@@ -1,10 +1,5 @@
-package com.company; /*
-ID: kooryan
-TASK:
-LANG: JAVA
-*/
-
 import java.io.*;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -23,17 +18,25 @@ public class word {
         }
 
         int size = 0;
+        int i = 0;
         StringBuilder word = new StringBuilder();
-        for (int i = 0; i < words.size(); i++) {
+
+        while (i < words.size()) {
             size += words.get(i).length();
+
             if (size <= K) {
                 word.append(words.get(i)).append(" ");
+                i++;
             } else {
                 size = 0;
                 word = new StringBuilder(word.substring(0, word.length() - 1));
+
                 pw.println(word);
                 word = new StringBuilder();
-                i--;
+
+                if (((i + 1) == words.size())) {
+                    pw.print(words.get(i));
+                }
             }
         }
 
